@@ -1,0 +1,89 @@
+body{
+    height: 100vh; /* Yüksekliği ekranın tamamına yaymak için */
+    width: 100%; /* Genişliği tamamen ekranın genişliği */
+    margin: 0;
+}
+/* Genel Container */
+.container {
+   
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+/* Form Kutusu */
+.box {
+   
+    background-color: rgba(70, 36, 23, 0.7);  /* Kırmızı renk, %50 şeffaflık */
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+   
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: auto;
+    height: 55vh; /* Yüksekliği ekranın tamamına yaymak için */
+    width: 90%; /* Genişliği tamamen ekranın genişliği */
+  }
+  
+  /* Label ve Inputları Yan Yana Getirme */
+  .box-input {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    gap: 10px; /* Label ile input arasında boşluk bırakır */
+    padding-top: 20px;
+  }
+  
+  /* Label Stili */
+  .box-input label {
+    font-weight: bold;
+    color: rgb(255, 255, 255);
+    font-size: 20px;
+    width: 40%; /* Label genişliği */
+    text-align: left; /* Sola yasladık */
+  }
+  
+  /* Input Stili */
+  .box-input input {
+    background-color: #191b09;
+    width: 60%; /* Input genişliği */
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+    outline: none;
+  }
+  
+  .box-input input:focus {
+    border-color: #000000;
+    background-color: #fff;
+  }
+  
+  /* Kaydol Butonu */
+  .submit-btn {
+    margin-top: 30px;
+    background-color: #191b09;
+    color: rgb(255, 255, 255);
+    padding: 14px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+  }
+  
+  .submit-btn:hover {
+    background-color: #070500;
+    transform: scale(1.05);
+    color: #fff;
+  }
+  .error-message {
+     color: #ffffff;
+     font-size: 20px;
+     font-style: bold;
+    
+  }

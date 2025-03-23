@@ -1,0 +1,125 @@
+
+body{
+    background-image: url('./images/m2wp2.jpg'); /* src/images klasöründeki m2wp.jpg'yi kullanıyoruz */
+    background-size: cover; /* Resmin tüm alanı kaplaması için */
+    background-position: center; /* Resmin merkezde olması için */
+    height: 100vh; /* Yüksekliği ekranın tamamına yaymak için */
+    width: 100%; /* Genişliği tamamen ekranın genişliği */
+    margin: 0;
+}
+.Home-Section{
+    
+ 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white; /* Yazının beyaz renkte görünmesi için */
+    text-align: center;
+    padding-top: 20px;
+    height: 90vh; /* Yüksekliği ekranın tamamına yaymak için */
+    width: 100%; /* Genişliği tamamen ekranın genişliği */
+
+}
+.box {
+   
+    display: grid;
+    grid-template-rows: 1fr 1fr; /* box-head üstte tam genişlik, box-bottom alt kısmı iki bölüme ayıracak */
+    grid-template-columns: 1fr; /* Tek sütun olacak */
+    gap: 20px; /* Elemanlar arasında boşluk */
+    width: 90%; /* Kutunun genişliği */
+    height: 90%; /* Kutunun yüksekliği */
+    border-radius: 8px;
+   
+  }
+  
+  .box-head {
+   
+    margin-top: 80px;
+    height: 50%; /* Box-head üstte tam genişlik ve yukarıda olacak */
+    
+  }
+  
+  .box-bottom {
+    margin-top: 110px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr; /* Box-bottom içindeki öğeler iki eşit sütuna bölünecek */
+    gap: 10px; /* Box-bottom elemanları arasındaki boşluk */
+  }
+  
+  .box-sign {
+   
+    height: 100px; /* Box-sign yüksekliği */
+  }
+  
+  .box-download {
+   
+    height: 100px; /* Box-download yüksekliği */
+  }
+  .animated-text {
+    background-color: rgba(70, 36, 23, 0.4);  /* Kırmızı renk, %50 şeffaflık */ 
+    color: rgb(255, 255, 255);  /* Kırmızı renk, %50 şeffaflık */  
+    font-weight: bold;
+    animation: slide-down 2s ease-out forwards;
+  }
+  h1{
+   
+    font-size: 3rem;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-style: italic;
+  }
+  p{
+    font-size: 1.8rem;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-style: italic;
+  }
+  .btn {
+    height: 80px;
+    width: 200px;
+    padding: 15px 30px;
+    background: linear-gradient(135deg, #000000, #d60f0f); /* Gradyan renk geçişi */
+    color: white;
+    border: none;
+    border-radius: 15px;
+    font-size: 1.3rem;
+    font-weight: bold;
+   
+    cursor: pointer;
+    outline: none;
+    box-shadow: 0 4px 15px rgba(100, 13, 20, 0.5); /* Hafif gölge */
+    transition: all 0.3s ease; /* Hover geçiş animasyonu */
+  }
+  
+  /* Hover efekti */
+  .btn:hover {
+    transform: scale(1.1); /* Butonu büyütme */
+    box-shadow: 0 6px 20px rgba(122, 40, 40, 0.8); /* Gölgeyi artırma */
+    background: linear-gradient(135deg, #473c3c, #574848); /* Gradyan geçişin tersine dönmesi */
+  }
+  
+  .btn:active {
+    transform: scale(0.95); /* Butona tıklandığında küçültme */
+    background: linear-gradient(135deg, #526266, #9ca8b8); /* Tıklama sırasında gradyan renk geçişi */
+  }
+  /* @keyframes ile yukarıdan aşağıya kayma animasyonu */
+  @keyframes slide-down {
+    0% {
+      transform: translateY(-500%); /* Başlangıçta yukarıda */
+      opacity: 0; /* Başlangıçta görünmez */
+    }
+    50% {
+      transform: translateY(20%); /* Orta noktada aşağıya kayar */
+      opacity: 0.7; /* Yavaşça görünür olur */
+    }
+    100% {
+      transform: translateY(0); /* Son konumda normal pozisyonda */
+      opacity: 1; /* Tam görünür */
+    }
+  }
+  @media (max-width: 768px) {
+    .box-bottom{
+      display: grid;
+      grid-template-columns: 1fr; /* Box-bottom içindeki öğeler iki eşit sütuna bölünecek */
+    }
+
+  }
+  
