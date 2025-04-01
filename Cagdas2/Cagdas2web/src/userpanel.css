@@ -1,0 +1,147 @@
+
+.userpanel-container{
+    background-image: url('/src/images/kayit_bg2.jpg'); 
+    background-size: 100% 100%;
+    background-position: center;  
+    background-repeat: no-repeat;       
+    background-attachment: fixed;
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    align-items: stretch;
+ 
+    justify-content: center;
+  
+    height: 100vh; 
+    width: 100vw; 
+    margin-bottom: 0 !important;
+    padding-bottom: 0;
+}
+
+
+.user-info, .character-info1 {
+    margin-top: 3rem;
+    width: 50% !important; 
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.box-bilgi1 {
+    font-size: 18px;
+    font-weight: bold;
+    padding: 10px;
+    background-color: #333;
+    color: white;
+    text-align: center;
+    border-radius: 5px;
+}
+
+.box-userpanel, .account-info{
+    background: #f4f4f4;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+.box-pass {
+    margin-left: 5rem;
+}
+.box-pass p{
+    color: brown;
+    font-weight: bold;
+    font-size: 20px;
+}
+.box-label {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px;
+    border-bottom: 1px solid #ddd;
+}
+
+.box-pass button {
+    width: 100%;
+    padding: 10px;
+    background: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.box-pass form {
+    margin-top: 10px;
+}
+
+.box-input1 {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+    color: #fff;
+}
+
+.box-input1 label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #fff;
+}
+
+.box-input1 input {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.box-pass button{
+    font-family: 'Kanit';
+    color: #fff;
+    width: 200px;
+    height: 50px;
+    margin-top: 30px;
+    background-color: rgba(9, 34, 9);
+    color: rgb(255, 255, 255);
+    padding: 14px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+.box-pass button:hover{
+    background-color: lightgray;
+    transform: scale(1.05);
+    color: #000000;
+}
+
+.box-pass input{
+    background-color: lightgray;
+    width: 60%; 
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+    outline: none;
+}
+.account-info{
+   display: flex;
+   flex-direction: column;
+
+}
+@media screen and (max-width: 768px) {
+    .userpanel-container{
+
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+    }
+    .box-pass {
+      margin: 1.5rem;
+     
+      
+    }
+    .box-pass form {
+       margin: 0;
+    }
+   
+
+}

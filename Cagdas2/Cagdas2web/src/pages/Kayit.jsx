@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import '../kayit.css';
-import axios from 'axios';  // axios'u import ediyoruz
+import axios from 'axios';  
 import { useNavigate } from 'react-router-dom';
 
 function Kayit() {
@@ -47,7 +47,7 @@ function Kayit() {
         }
     
 
-        // Backend'e veri gönderme
+      
         try {
             const response = await axios.post('http://localhost:5000/api/register', {
                 username,
@@ -57,8 +57,9 @@ function Kayit() {
                 deleteCode
             });
             
-            // Backend başarıyla döndüğünde
+       
             alert('Kullanıcı başarıyla kaydedildi');
+            setErrorMessage("Hesabınız Oluşturuldu.")
             setUsername('')
             setPhone('')
             setPassword('')
@@ -66,12 +67,12 @@ function Kayit() {
             setDeleteCode('')
             setConfirmPassword('')
         } catch (err) {
-            // Hata mesajı alındığında
+      
             if (err.response && err.response.data) {
-                // Backend'den gelen hata mesajını al
-                alert(err.response.data.message); // Backend mesajını göster
+              
+                alert(err.response.data.message); 
             } else {
-                alert('Kayıt sırasında bir hata oluştu'); // Genel hata mesajı
+                alert('Kayıt sırasında bir hata oluştu'); ı
             }
         }
        
@@ -81,7 +82,8 @@ function Kayit() {
       }
 
     return (
-        <div className="container">
+        <div className="container-custom">
+            <div className='box-bilgi'>Kayıt Ol</div>
             <div className="box">
                 <div className='box-input'>
                     <label>Kullanıcı Adı:</label>

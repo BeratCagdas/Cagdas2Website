@@ -1,55 +1,87 @@
-body{
-    height: 100vh; /* Yüksekliği ekranın tamamına yaymak için */
-    width: 100%; /* Genişliği tamamen ekranın genişliği */
-    margin: 0;
+
+html, body {
+  margin: 0;
+  height: 100vh; 
+  width: 100vw;  
+
+
 }
-/* Genel Container */
-.container {
-   
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-  }
+.container-custom {
+    background-image: url('/src/images/kayit_bg2.jpg'); 
   
-/* Form Kutusu */
+    background-size: 100% 100%;
+    background-position: center;  
+    background-repeat: no-repeat;        
+    background-attachment: fixed; 
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    height: 100%; 
+    width: 100%;
+    margin-bottom: 0 !important;
+    padding-bottom: 0;
+  }
+  .box-bilgi {
+  
+    margin-bottom: 0 !important;
+    margin-top: 15px !important;
+  
+    height: 70px;
+    width: 100vw;
+    background-color: rgba(0, 0, 0, 0.4);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid rgba(255, 255, 255, 1); 
+    font-family: 'Kanit';
+    font-size: 24px;
+    line-height: normal;
+  }
+
 .box {
-   
-    background-color: rgba(70, 36, 23, 0.7);  /* Kırmızı renk, %50 şeffaflık */
+    margin-top: 15px !important;
+
+    height: 100vh;
+    width: 100vw;  
+    background-color: rgb(9, 34, 9, 0.4);
     display: flex;
     flex-direction: column;
     gap: 15px;
-   
-    padding: 25px;
+    padding-right: 30px;
+    padding-left: 30px;
+    font-family: 'Kanit';
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    width: auto;
-    height: 55vh; /* Yüksekliği ekranın tamamına yaymak için */
-    width: 90%; /* Genişliği tamamen ekranın genişliği */
+    
+ 
   }
+
+ 
   
-  /* Label ve Inputları Yan Yana Getirme */
   .box-input {
     display: flex;
     align-items: center;
     width: 100%;
-    gap: 10px; /* Label ile input arasında boşluk bırakır */
-    padding-top: 20px;
+    gap: 10px; 
+    padding-top: 30px;
   }
   
-  /* Label Stili */
+
   .box-input label {
     font-weight: bold;
     color: rgb(255, 255, 255);
     font-size: 20px;
-    width: 40%; /* Label genişliği */
-    text-align: left; /* Sola yasladık */
+    width: 40%;
+    text-align: left; 
   }
   
-  /* Input Stili */
+
   .box-input input {
-    background-color: #191b09;
-    width: 60%; /* Input genişliği */
+    background-color: lightgray;
+    width: 60%; 
     padding: 8px;
     border: 1px solid #ccc;
     border-radius: 5px;
@@ -62,10 +94,10 @@ body{
     background-color: #fff;
   }
   
-  /* Kaydol Butonu */
+
   .submit-btn {
     margin-top: 30px;
-    background-color: #191b09;
+    background-color: rgba(9, 34, 9);
     color: rgb(255, 255, 255);
     padding: 14px;
     border: none;
@@ -77,13 +109,15 @@ body{
   }
   
   .submit-btn:hover {
-    background-color: #070500;
+    background-color: lightgray;
     transform: scale(1.05);
-    color: #fff;
+    color: #000000;
   }
   .error-message {
-     color: #ffffff;
+     color: #1f0606;
      font-size: 20px;
      font-style: bold;
-    
+     font-family: 'Kanit';
+     align-items: center;
+     justify-content: center;
   }

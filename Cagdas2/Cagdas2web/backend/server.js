@@ -4,7 +4,7 @@ const cors = require('cors');
 const bcrypt = require('bcryptjs');
 const bodyParser = require('body-parser');
 const jwt = require('jsonwebtoken');
-
+const eventRoutes = require('./routes/events'); // Events routes'u dahil ediyoruz
 const app = express();
 const port = 5000;
 const SECRET_KEY = "gizli_anahtar"; // JWT için gizli anahtar
@@ -12,7 +12,7 @@ const SECRET_KEY = "gizli_anahtar"; // JWT için gizli anahtar
 // Middleware
 app.use(cors());
 app.use(bodyParser.json());
-
+app.use(express.json());
 // MongoDB bağlantısı
 mongoose.connect('mongodb://localhost:27017/kayit_sistemi', {
     useNewUrlParser: true,
@@ -30,6 +30,7 @@ const userSchema = new mongoose.Schema({
     email: { type: String, required: true },
     phone: { type: String, required: true },
     deleteCode: { type: String, required: true },
+  
 });
 
 const User = mongoose.model('User', userSchema);
@@ -63,7 +64,7 @@ app.post('/api/register', async (req, res) => {
     }
 });
 
-// Giriş API'si (JWT ile)
+// Giriş API'si 
 app.post('/api/login', async (req, res) => {
     const { username, password } = req.body;
 
@@ -89,7 +90,7 @@ app.post('/api/login', async (req, res) => {
     }
 });
 
-// Kullanıcı bilgilerini getiren API (JWT doğrulamalı)
+// Kullanıcı bilgilerini getiren API 
 app.get('/api/user', async (req, res) => {
     const token = req.headers.authorization;
 
@@ -125,27 +126,27 @@ app.post('/api/user/change-password', async (req, res) => {
         const decoded = jwt.verify(token, SECRET_KEY);
         const userId = decoded.userId;
 
-        // Kullanıcıyı veritabanında bul
+    
         const user = await User.findById(userId);
         if (!user) {
             return res.status(400).json({ message: 'Kullanıcı bulunamadı' });
         }
 
-        // Eski şifreyi kontrol et
+     
         const isMatch = await bcrypt.compare(oldPassword, user.password);
         if (!isMatch) {
             return res.status(400).json({ message: 'Eski şifre hatalı' });
         }
 
-        // Yeni şifre için minimum uzunluk kontrolü
+      
         if (newPassword.length < 6) {
             return res.status(400).json({ message: 'Şifre en az 6 karakter olmalıdır.' });
         }
 
-        // Yeni şifreyi hash'le
+     
         const hashedPassword = await bcrypt.hash(newPassword, 10);
 
-        // Kullanıcıyı güncelle
+      
         user.password = hashedPassword;
         await user.save();
 
@@ -155,6 +156,60 @@ app.post('/api/user/change-password', async (req, res) => {
         res.status(500).json({ message: 'Şifre değiştirilirken hata oluştu' });
     }
 });
+
+app.use('/api/events', eventRoutes);
+
+
+//  En yüksek level karakteri getiren API
+app.get("/top-character/:type", async (req, res) => {
+    try {
+      const { type } = req.params;
+      const character = await User.findOne({ "character.type": type })
+        .sort({ "character.level": -1 }) // Level'e göre sıralama
+        .lean();
+  
+      if (!character) return res.status(404).json({ message: "Karakter bulunamadı" });
+  
+      res.json(character.character); // Sadece `character` nesnesini döndürüyoruz
+    } catch (error) {
+      res.status(500).json({ message: "Sunucu hatası", error });
+    }
+  });
+  
+  //  En yüksek level ilk 10 karakteri getiren API
+  app.get("/top-10", async (req, res) => {
+    try {
+      const characters = await User.find()
+        .sort({ "character.level": -1 }) // Level'e göre azalan sırala
+        .limit(10)
+        .lean();
+  
+      res.json(characters.map((user) => user.character)); // `character` nesnesini al
+    } catch (error) {
+      res.status(500).json({ message: "Sunucu hatası", error });
+    }
+  });
+  // En yüksek level ilk 100 karakteri getiren API
+ 
+  app.get("/get-100", async (req, res) => {
+    try {   
+      const characterCount = await User.countDocuments({ character: { $exists: true } });
+      const limit = Math.min(characterCount, 100);
+      const characters100 = await User.find()
+        .sort({ "character.level": -1 })
+        .select("character -_id")
+        .limit(limit)
+        .lean();
+      
+    
+      res.json(characters100.map((user) => user.character));
+    } catch (error) {
+      console.error("get-100 API hatası:", error);
+      res.status(500).json({ message: "Sunucu hatası", error });
+    }
+  });
+  
+
 
 
 // Sunucuyu başlat

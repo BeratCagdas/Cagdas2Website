@@ -7,7 +7,7 @@ export default defineConfig({
   optimizeDeps: {
     include: ['jwt-decode'],
     esbuildOptions: {
-      // Eğer bu hata devam ederse, esbuild'e yardımcı olabiliriz
+     
       loader: {
         '.js': 'jsx',
       },
